@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J$T Cake City – Nairobi's Finest Custom Cakes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cream:     #FBF6EE;
+      --pink:      #F2C4CE;
+      --gold:      #C9A84C;
+      --deep-gold: #8B6914;
+      --brown:     #3D2B1F;
+      --dark:      #1E140E;
+      --muted:     #7A6255;
+      --white:     #FFFFFF;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 40px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: rgba(251, 246, 238, 0.96);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--brown);
+      color: var(--cream) !important;
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--brown) !important; }
+
+    /* Hamburger (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--cream);
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+      padding: 1rem 2rem 1.5rem;
+    }
+    .mobile-menu a {
+      font-size: 15px;
+      color: var(--muted);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu.open { display: flex; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #FBF6EE 0%, #FDF0F3 50%, #FBF6EE 100%);
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 550px; height: 550px;
+      border-radius: 50%;
+      background: rgba(242, 196, 206, 0.28);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -140px; left: -80px;
+      width: 450px; height: 450px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.1);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(201, 168, 76, 0.13);
+      color: var(--deep-gold);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      line-height: 1.12;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2.25rem;
+      font-weight: 300;
+      max-width: 440px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--brown);
+      color: var(--cream);
+      padding: 14px 30px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
+      font-weight: 500;
+      border: 2px solid var(--brown);
+      transition: all 0.22s;
+    }
+    .btn-primary:hover { background: var(--gold); border-color: var(--gold); color: var(--brown); }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--brown);
+      padding: 14px 30px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
+      font-weight: 500;
+      border: 2px solid rgba(61, 43, 31, 0.22);
+      transition: all 0.22s;
+    }
+    .btn-outline:hover { border-color: var(--brown); background: rgba(61,43,31,0.05); }
+
+    /* Hero Visual */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .cake-circle {
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #F9D8E0, #F9EACF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 170px;
+      box-shadow: 0 30px 90px rgba(201, 168, 76, 0.18);
+      position: relative;
+    }
+    .float-badge {
+      position: absolute;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 10px 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--brown);
+      white-space: nowrap;
+    }
+    .badge-top { top: 30px; right: -10px; }
+    .badge-bot { bottom: 50px; left: -30px; color: var(--gold); }
+
+    /* ── STATS BAR ── */
+    .stats {
+      background: var(--brown);
+      padding: 3rem 2rem;
+    }
+    .stats-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-size: 13px;
+      color: rgba(251,246,238,0.6);
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.11);
+      color: var(--deep-gold);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 0.9rem;
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 520px;
+    }
+    .section-header { margin-bottom: 3rem; }
+
+    /* ── SHOP / CAKES ── */
+    .cat-tabs {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.25rem;
+    }
+    .cat-tab {
+      background: var(--white);
+      border: 1.5px solid rgba(201,168,76,0.25);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s;
+    }
+    .cat-tab.active, .cat-tab:hover {
+      background: var(--brown);
+      color: var(--cream);
+      border-color: var(--brown);
+    }
+    .cakes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .cake-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.13);
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .cake-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.09);
+    }
+    .cake-img {
+      height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 84px;
+      position: relative;
+    }
+    .cake-pill {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--gold);
+      color: var(--brown);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+    }
+    .cake-body { padding: 1.4rem; }
+    .cake-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 5px;
+    }
+    .cake-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1.1rem;
+    }
+    .cake-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cake-price { font-size: 17px; font-weight: 500; color: var(--gold); }
+    .cake-price small { font-size: 12px; color: var(--muted); font-weight: 300; }
+    .order-btn {
+      background: var(--brown);
+      color: var(--cream);
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .order-btn:hover { background: var(--gold); color: var(--brown); }
+
+    /* ── CUSTOM BUILDER PROMO ── */
+    .builder-promo {
+      background: var(--brown);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .builder-promo h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .builder-promo p { font-size: 14px; color: rgba(251,246,238,0.65); font-weight: 300; }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--brown);
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-gold:hover { background: #E5C25A; }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: #FDF8F1; }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    .how-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      text-align: center;
+      border: 1px solid rgba(201,168,76,0.13);
+    }
+    .how-num {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.13);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .how-icon { font-size: 40px; margin-bottom: 0.75rem; }
+    .how-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.6rem;
+    }
+    .how-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #F9D8E0, #F9EACF);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      transition: transform 0.22s;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .gallery-item:hover { transform: scale(1.04); }
+    .gallery-item:nth-child(2) { background: linear-gradient(135deg,#F0E8FE,#FEE8F0); }
+    .gallery-item:nth-child(3) { background: linear-gradient(135deg,#E8FEF0,#FEF5E8); }
+    .gallery-item:nth-child(4) { background: linear-gradient(135deg,#E8F5FE,#F5FDE8); }
+    .gallery-item:nth-child(5) { background: linear-gradient(135deg,#FEF0E8,#FDE8EE); }
+    .gallery-item:nth-child(6) { background: linear-gradient(135deg,#FDE8EE,#FBF0D5); }
+    .gallery-item:nth-child(7) { background: linear-gradient(135deg,#F5E8FE,#FEE8F0); }
+    .gallery-item:nth-child(8) { background: linear-gradient(135deg,#FBF0D5,#F9D8E0); }
+
+    /* ── TESTIMONIALS ── */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      border: 1px solid rgba(201,168,76,0.13);
+    }
+    .testi-stars { color: var(--gold); font-size: 15px; letter-spacing: 3px; margin-bottom: 0.75rem; }
+    .testi-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(242,196,206,0.45);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 13px; font-weight: 500; color: var(--brown); }
+    .testi-role { font-size: 12px; color: var(--muted); }
+
+    /* ── ABOUT ── */
+    .about { background: #FDF8F1; }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-circle {
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F9D8E0, #F9EACF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 130px;
+    }
+    .about-badge {
+      position: absolute;
+      background: var(--brown);
+      color: var(--gold);
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      bottom: 30px;
+      right: 0;
+    }
+    .about-badge strong { display: block; font-size: 22px; font-weight: 700; }
+    .about-badge span { font-size: 12px; color: rgba(251,246,238,0.7); }
+    .about-text p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; font-weight: 300; }
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+    .value-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+    .value-icon { font-size: 24px; margin-bottom: 6px; }
+    .value-label { font-size: 13px; font-weight: 500; color: var(--brown); }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+    .contact-value { font-size: 15px; font-weight: 500; color: var(--brown); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--brown); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--white);
+      border: 1.5px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--brown);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── CTA BANNER ── */
+    .cta-section {
+      background: var(--brown);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 16px;
+      color: rgba(251,246,238,0.65);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .btn-wa:hover { background: #20BA5A; }
+    .btn-wa svg { width: 20px; height: 20px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 4rem 2rem 2rem;
+      color: rgba(251,246,238,0.65);
+    }
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 2rem;
+    }
+    .footer-brand .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .footer-brand p { font-size: 13px; line-height: 1.75; }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      font-size: 13px;
+      color: rgba(251,246,238,0.55);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: 12px;
+      color: rgba(251,246,238,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 26px;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 28px rgba(37,211,102,0.4);
+      z-index: 999;
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-float svg { width: 30px; height: 30px; }
+
+    /* ── PROMO BANNER ── */
+    .promo-bar {
+      background: var(--gold);
+      color: var(--brown);
+      text-align: center;
+      padding: 10px 2rem;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner,
+      .about-inner,
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-visual, .about-visual { display: none; }
+      .cakes-grid, .how-grid, .testi-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .cakes-grid, .how-grid, .testi-grid, .gallery-grid,
+      .stats-grid, .footer-grid, .about-values { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.25rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .cta-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROMO BAR -->
+  <div class="promo-bar">
+    🎉 Free delivery on orders above KES 5,000 within Nairobi! Order now via WhatsApp.
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">J<span>$</span>T Cake City</a>
+      <ul class="nav-links">
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Order Now</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#shop" onclick="toggleMenu()">Shop</a>
+      <a href="#how" onclick="toggleMenu()">How It Works</a>
+      <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+      <a href="#about" onclick="toggleMenu()">About</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
+      <a href="#contact" onclick="toggleMenu()" style="color:var(--gold);font-weight:500">Order Now →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">✦ Nairobi's Finest Custom Cakes</div>
+        <h1>Cakes Baked with <em>Love,</em> Delivered with Joy</h1>
+        <p>From birthday celebrations to corporate events — J$T Cake City crafts cakes that taste as stunning as they look. Every cake is made fresh to order.</p>
+        <div class="hero-btns">
+          <a href="#shop" class="btn-primary">Shop Our Cakes</a>
+          <a href="#gallery" class="btn-outline">View Gallery</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="cake-circle">🎂</div>
+        <div class="float-badge badge-top">⭐ 4.9 Rating · 500+ Reviews</div>
+        <div class="float-badge badge-bot">🚚 Nairobi-Wide Delivery</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-grid">
+      <div><div class="stat-num">3+</div><div class="stat-label">Years in Business</div></div>
+      <div><div class="stat-num">500+</div><div class="stat-label">Happy Customers</div></div>
+      <div><div class="stat-num">50+</div><div class="stat-label">Cake Designs</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Fresh Ingredients</div></div>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <section id="shop">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Our Menu</div>
+        <h2 class="section-title">Freshly Baked, Just for You</h2>
+        <p class="section-sub">Every cake is made to order with premium ingredients. Browse by occasion.</p>
+      </div>
+      <div class="cat-tabs">
+        <button class="cat-tab active" onclick="filterCakes('all', this)">All Cakes</button>
+        <button class="cat-tab" onclick="filterCakes('birthday', this)">Birthday</button>
+        <button class="cat-tab" onclick="filterCakes('wedding', this)">Wedding</button>
+        <button class="cat-tab" onclick="filterCakes('kids', this)">Kids</button>
+        <button class="cat-tab" onclick="filterCakes('cupcakes', this)">Cupcakes</button>
+        <button class="cat-tab" onclick="filterCakes('corporate', this)">Corporate</button>
+      </div>
+      <div class="cakes-grid" id="cakesGrid">
+        <!-- cards injected by JS -->
+      </div>
+
+      <!-- Custom Cake Promo -->
+      <div class="builder-promo">
+        <div>
+          <h3>Can't find what you need?</h3>
+          <p>Use our custom cake builder — choose size, flavor, theme, and add a personal message. We'll quote you instantly.</p>
+        </div>
+        <a href="#contact" class="btn-gold">Build My Custom Cake →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center; max-width:500px; margin:0 auto 3rem;">
+        <div class="section-tag">The Process</div>
+        <h2 class="section-title">Ordering Is Simple</h2>
+        <p class="section-sub" style="max-width:100%">Three easy steps from craving to celebration.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-num">01</div>
+          <div class="how-icon">🎨</div>
+          <div class="how-title">Choose or Customize</div>
+          <div class="how-desc">Browse our menu or build your own cake — pick the size, flavor, theme, and write your personal message.</div>
+        </div>
+        <div class="how-card">
+          <div class="how-num">02</div>
+          <div class="how-icon">📲</div>
+          <div class="how-title">Place Your Order</div>
+          <div class="how-desc">Order via our website or WhatsApp. Pay securely with M-Pesa or card. We confirm your order within the hour.</div>
+        </div>
+        <div class="how-card">
+          <div class="how-num">03</div>
+          <div class="how-icon">🚚</div>
+          <div class="how-title">Receive &amp; Celebrate</div>
+          <div class="how-desc">Fresh delivery across Nairobi. Pick-up also available. Your celebration starts the moment you open the box.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Gallery</div>
+        <h2 class="section-title">Made with Passion</h2>
+        <p class="section-sub">A peek into some of our favourite creations for clients across Nairobi.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">🎂</div>
+        <div class="gallery-item">💍</div>
+        <div class="gallery-item">🧁</div>
+        <div class="gallery-item">🦄</div>
+        <div class="gallery-item">🍫</div>
+        <div class="gallery-item">🌸</div>
+        <div class="gallery-item">🎉</div>
+        <div class="gallery-item">⭐</div>
+      </div>
+      <p style="text-align:center;margin-top:1.5rem;font-size:14px;color:var(--muted)">
+        Follow us on Instagram <a href="#" style="color:var(--gold);font-weight:500">@JSTCakeCity</a> for daily cake inspiration 🍰
+      </p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="background:#FDF8F1">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Reviews</div>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-sub">Over 500 happy families across Nairobi and counting.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"The birthday cake was absolutely stunning. Everyone at the party couldn't stop complimenting it — and it tasted even better than it looked!"</div>
+          <div class="testi-author">
+            <div class="testi-avatar">👩🏾</div>
+            <div><div class="testi-name">Wanjiru M.</div><div class="testi-role">Birthday order · Westlands</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"We ordered our wedding cake and they exceeded all expectations. The fondant work was flawless and delivery was right on time. Highly recommend!"</div>
+          <div class="testi-author">
+            <div class="testi-avatar">💑</div>
+            <div><div class="testi-name">David &amp; Sarah K.</div><div class="testi-role">Wedding cake · Karen</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"We order cupcakes for all our office events now. Always fresh, always on time. Our team loves the variety of flavors. Great customer service!"</div>
+          <div class="testi-author">
+            <div class="testi-avatar">👩🏽</div>
+            <div><div class="testi-name">Amina T.</div><div class="testi-role">Corporate client · CBD</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-visual">
+        <div class="about-circle">👩🏾‍🍳</div>
+        <div class="about-badge">
+          <strong>3+ Years</strong>
+          <span>Of Baking Excellence</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-tag">Our Story</div>
+        <h2 class="section-title">Baked from the Heart</h2>
+        <p>J$T Cake City started as a passion project in Nairobi and has grown into one of the city's most loved custom cake studios. For over 3 years, we have been creating edible works of art for birthdays, weddings, corporate events, and everyday celebrations.</p>
+        <p>Every cake that leaves our kitchen is made fresh with premium ingredients — no shortcuts, no compromises. We believe that a great cake makes every celebration unforgettable.</p>
+        <div class="about-values">
+          <div class="value-item"><div class="value-icon">🌿</div><div class="value-label">Fresh Ingredients Daily</div></div>
+          <div class="value-item"><div class="value-icon">🎨</div><div class="value-label">Custom Designs</div></div>
+          <div class="value-item"><div class="value-icon">🚚</div><div class="value-label">Reliable Delivery</div></div>
+          <div class="value-item"><div class="value-icon">💛</div><div class="value-label">Made with Love</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-section">
+    <div class="section-tag" style="background:rgba(201,168,76,0.18);border-color:rgba(201,168,76,0.4)">Ready to Order?</div>
+    <h2>Every Occasion Deserves a Perfect Cake</h2>
+    <p>Custom orders accepted · 24–48 hr turnaround · Free delivery above KES 5,000</p>
+    <div class="cta-btns">
+      <a href="#contact" class="btn-gold">Order a Cake →</a>
+      <a href="https://wa.me/254700000000?text=Hi%20JST%20Cake%20City!%20I%20would%20like%20to%20order%20a%20cake." class="btn-wa" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Get in Touch</div>
+        <h2 class="section-title">Place an Order</h2>
+        <p class="section-sub">Fill in the form below or reach us directly on WhatsApp. We respond within the hour.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone / WhatsApp</div>
+              <div class="contact-value">+254 700 000 000</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Nairobi, Kenya</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-label">Business Hours</div>
+              <div class="contact-value">Mon–Sat: 8am – 8pm</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:2px">Sunday: 10am – 6pm</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💳</div>
+            <div>
+              <div class="contact-label">Payment Methods</div>
+              <div class="contact-value">M-Pesa · Visa · Mastercard</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📸</div>
+            <div>
+              <div class="contact-label">Follow Us</div>
+              <div class="contact-value"><a href="#" style="color:var(--gold)">@JSTCakeCity</a> on Instagram</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form class="contact-form" onsubmit="handleOrder(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Full Name</label>
+                <input type="text" id="fname" placeholder="e.g. Wanjiru Maina" required />
+              </div>
+              <div class="form-group">
+                <label for="fphone">Phone / WhatsApp</label>
+                <input type="tel" id="fphone" placeholder="+254 7XX XXX XXX" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ftype">Cake Type</label>
+              <select id="ftype">
+                <option value="">Select occasion...</option>
+                <option>Birthday Cake</option>
+                <option>Wedding Cake</option>
+                <option>Kids Themed Cake</option>
+                <option>Cupcakes</option>
+                <option>Corporate / Event Cake</option>
+                <option>Custom / Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fdate">Delivery Date</label>
+                <input type="date" id="fdate" required />
+              </div>
+              <div class="form-group">
+                <label for="fsize">Size / Servings</label>
+                <select id="fsize">
+                  <option value="">Select size...</option>
+                  <option>Small (10–15 pax)</option>
+                  <option>Medium (20–30 pax)</option>
+                  <option>Large (40–60 pax)</option>
+                  <option>Extra Large (60+ pax)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fmsg">Message / Custom Instructions</label>
+              <textarea id="fmsg" placeholder="Flavor, theme, color scheme, message on cake, any allergies..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="border:none;width:100%;padding:15px;font-size:15px;border-radius:12px">
+              Submit Order Request →
+            </button>
+            <p id="formSuccess" style="display:none;text-align:center;color:green;font-size:14px;margin-top:0.5rem">
+              ✅ Order received! We'll contact you within the hour.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">J<span style="color:var(--gold)">$</span>T Cake City</a>
+        <p>Nairobi's premier custom cake studio. Made fresh daily, delivered with love. Three years of sweetening life's moments.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#shop">Birthday Cakes</a></li>
+          <li><a href="#shop">Wedding Cakes</a></li>
+          <li><a href="#shop">Kids Cakes</a></li>
+          <li><a href="#shop">Cupcakes</a></li>
+          <li><a href="#shop">Corporate Cakes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+254700000000">📞 +254 700 000 000</a></li>
+          <li><a href="https://wa.me/254700000000" target="_blank">💬 WhatsApp</a></li>
+          <li><a href="#">📸 Instagram</a></li>
+          <li style="color:rgba(251,246,238,0.35);font-size:12px;margin-top:8px">Nairobi, Kenya<br>Mon–Sat 8am–8pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 J$T Cake City. All rights reserved.</span>
+      <span>Made with 🍰 in Nairobi</span>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="wa-float" href="https://wa.me/254700000000?text=Hi%20JST%20Cake%20City!%20I%27d%20like%20to%20order%20a%20cake." target="_blank" title="Order on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // ── CAKE DATA ──
+    const cakes = [
+      { cat:'birthday', emoji:'🎂', bg:'linear-gradient(135deg,#FDE8EE,#FBF0D5)', badge:'🔥 Bestseller', badgeStyle:'', name:'Classic Birthday Cake', desc:'Vanilla sponge, fresh cream layers, personalized decoration. Perfect for all ages.', price:'From KES 2,500', unit:'/ cake' },
+      { cat:'wedding',  emoji:'💍', bg:'linear-gradient(135deg,#FDF0E8,#F9E5F0)', badge:'Premium',       badgeStyle:'background:#7A6255;color:#FBF6EE', name:'Elegant Wedding Cake', desc:'3-tier masterpiece with fondant finish, fresh flowers, and custom monogram topper.', price:'From KES 15,000', unit:'/ cake' },
+      { cat:'cupcakes', emoji:'🧁', bg:'linear-gradient(135deg,#E8F5FE,#F5FDE8)', badge:'',             badgeStyle:'', name:'Cupcake Dozen', desc:'Mix of flavors — chocolate, strawberry, red velvet. Ideal for parties and events.', price:'From KES 1,200', unit:'/ dozen' },
+      { cat:'kids',     emoji:'🦄', bg:'linear-gradient(135deg,#FEF5E8,#FEEAE8)', badge:"Kids' Fave",  badgeStyle:'', name:'Themed Kids Cake', desc:'Custom cartoon and character designs — superheroes, princesses, animals, you name it.', price:'From KES 3,500', unit:'/ cake' },
+      { cat:'birthday', emoji:'🍫', bg:'linear-gradient(135deg,#F5E8FE,#FEE8F0)', badge:'',            badgeStyle:'', name:'Chocolate Ganache Cake', desc:'Rich dark chocolate layers with silky ganache drip. A chocoholic dream cake.', price:'From KES 3,000', unit:'/ cake' },
+      { cat:'corporate',emoji:'🏢', bg:'linear-gradient(135deg,#E8FEF0,#FEF5E8)', badge:'Corporate',   badgeStyle:'background:#1E6B45;color:white', name:'Corporate Event Cake', desc:'Branded cakes for product launches, office parties, and milestones. Bulk orders welcome.', price:'From KES 8,000', unit:'/ cake' },
+      { cat:'wedding',  emoji:'🌸', bg:'linear-gradient(135deg,#FEE8F5,#FBF0D5)', badge:'New',         badgeStyle:'background:#B03060;color:white', name:'Floral Fondant Cake', desc:'Handcrafted sugar flowers in full bloom. Elegant, romantic, utterly unforgettable.', price:'From KES 12,000', unit:'/ cake' },
+      { cat:'kids',     emoji:'🚀', bg:'linear-gradient(135deg,#E8EFFE,#E8FEF9)', badge:'',            badgeStyle:'', name:'Space Adventure Cake', desc:'Blast off! Rockets, planets, and stars — perfect for the little explorer in your life.', price:'From KES 4,000', unit:'/ cake' },
+      { cat:'cupcakes', emoji:'🎀', bg:'linear-gradient(135deg,#FEE8F0,#FBF0EE)', badge:'Gift Set',    badgeStyle:'background:#8B1A4A;color:white', name:'Gift Box Cupcakes', desc:'Elegantly boxed cupcakes in matching flavors — perfect corporate and personal gifts.', price:'From KES 2,000', unit:'/ set' },
+    ];
+
+    function renderCakes(filter) {
+      const grid = document.getElementById('cakesGrid');
+      const filtered = filter === 'all' ? cakes : cakes.filter(c => c.cat === filter);
+      grid.innerHTML = filtered.map(c => `
+        <div class="cake-card">
+          <div class="cake-img" style="background:${c.bg}">
+            <span>${c.emoji}</span>
+            ${c.badge ? `<div class="cake-pill" style="${c.badgeStyle}">${c.badge}</div>` : ''}
+          </div>
+          <div class="cake-body">
+            <div class="cake-name">${c.name}</div>
+            <div class="cake-desc">${c.desc}</div>
+            <div class="cake-footer">
+              <div class="cake-price">${c.price} <small>${c.unit}</small></div>
+              <button class="order-btn" onclick="orderCake('${c.name}')">Order</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCakes(cat, btn) {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      renderCakes(cat);
+    }
+
+    function orderCake(name) {
+      const msg = encodeURIComponent(`Hi JST Cake City! I'd like to order: ${name}. Please advise on availability and pricing.`);
+      window.open(`https://wa.me/254700000000?text=${msg}`, '_blank');
+    }
+
+    renderCakes('all');
+
+    // ── MOBILE MENU ──
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // ── CONTACT FORM ──
+    function handleOrder(e) {
+      e.preventDefault();
+      const name   = document.getElementById('fname').value;
+      const phone  = document.getElementById('fphone').value;
+      const type   = document.getElementById('ftype').value;
+      const date   = document.getElementById('fdate').value;
+      const size   = document.getElementById('fsize').value;
+      const msg    = document.getElementById('fmsg').value;
+      const wa     = `Hi JST Cake City! I'd like to place an order.\n\nName: ${name}\nPhone: ${phone}\nType: ${type}\nDate: ${date}\nSize: ${size}\nNotes: ${msg}`;
+      window.open(`https://wa.me/254700000000?text=${encodeURIComponent(wa)}`, '_blank');
+      document.getElementById('formSuccess').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
